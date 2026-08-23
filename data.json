@@ -1,0 +1,24 @@
+{
+  "sample": true,
+  "league_id": 1741238,
+  "league_name": "With my woes",
+  "season": "2026/27",
+  "updated_at": "2026-08-23T09:00:00Z",
+  "last_processed_gw": 2,
+  "managers": [
+    { "entry": 1001, "name": "Zee", "team": "Woe United" },
+    { "entry": 1002, "name": "Sam", "team": "Sam's Salahdins" },
+    { "entry": 1003, "name": "Adam", "team": "Haaland Oates" },
+    { "entry": 1004, "name": "Bilal", "team": "Bilbao Baggins" },
+    { "entry": 1005, "name": "Yusuf", "team": "No Kane No Gain" },
+    { "entry": 1006, "name": "Hana", "team": "Palmer Violets" }
+  ],
+  "scores": {
+    "1001": { "1": 68, "2": 54 },
+    "1002": { "1": 71, "2": 49 },
+    "1003": { "1": 55, "2": 66 },
+    "1004": { "1": 62, "2": 58 },
+    "1005": { "1": 49, "2": 73 },
+    "1006": { "1": 66, "2": 61 }
+  }
+}

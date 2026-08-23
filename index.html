@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>With My Woes · FPL 2026/27</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Spline+Sans+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pitch: #0E3B2C;
+    --pitch-deep: #092A1F;
+    --pitch-panel: #10462F;
+    --chalk: #F4F1E4;
+    --chalk-dim: rgba(244, 241, 228, 0.62);
+    --line: rgba(244, 241, 228, 0.16);
+    --gold: #E9B44C;
+    --gold-deep: #B8862A;
+    --up: #7BD389;
+    --down: #E4715C;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--pitch-deep);
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--pitch-deep) 0, var(--pitch-deep) 72px,
+      #0A2E22 72px, #0A2E22 144px
+    );
+    color: var(--chalk);
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 28px 16px 64px; }
+
+  /* Header */
+  header { text-align: center; padding: 18px 0 26px; }
+  .eyebrow {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2.1rem, 8vw, 3.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    margin: 6px 0 10px;
+  }
+  .updated {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 12px; color: var(--chalk-dim);
+  }
+  .sample-badge {
+    display: none;
+    margin: 10px auto 0; width: fit-content;
+    font-family: 'Spline Sans Mono', monospace; font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--pitch-deep); background: var(--gold);
+    padding: 3px 10px; border-radius: 999px;
+  }
+  body.is-sample .sample-badge { display: block; }
+
+  /* Season strip — signature */
+  .season-strip { margin: 8px 0 30px; }
+  .strip-track { display: flex; gap: 10px; }
+  .strip-block { flex: 1; }
+  .strip-cells { display: flex; gap: 2px; }
+  .strip-cells span {
+    flex: 1; height: 12px; border-radius: 2px;
+    background: rgba(244, 241, 228, 0.12);
+  }
+  .strip-cells span.done { background: var(--chalk); }
+  .strip-cells span.live { background: var(--gold); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: 0.45; } }
+  @media (prefers-reduced-motion: reduce) { .strip-cells span.live { animation: none; } }
+  .strip-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 6px;
+    font-family: 'Spline Sans Mono', monospace; font-size: 10.5px;
+    color: var(--chalk-dim); letter-spacing: 0.04em;
+  }
+  .strip-label .prize { color: var(--gold); font-weight: 700; }
+  .strip-winner {
+    margin-top: 5px;
+    font-family: 'Spline Sans Mono', monospace; font-size: 11px;
+    color: var(--gold); font-weight: 700;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* Panels */
+  section { margin-bottom: 34px; }
+  .panel {
+    background: var(--pitch-panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .section-sub { font-size: 13.5px; color: var(--chalk-dim); margin-bottom: 12px; }
+
+  /* Winner banner */
+  .winner-banner {
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: var(--pitch-deep);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 34px;
+  }
+  .winner-banner .wb-eyebrow {
+    font-family: 'Spline Sans Mono', monospace; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+  }
+  .winner-banner .wb-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(1.4rem, 6vw, 2rem); text-transform: uppercase;
+    line-height: 1.15; margin: 2px 0;
+  }
+  .winner-banner .wb-detail { font-size: 14px; font-weight: 600; }
+
+  /* Standings table */
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 11px 12px; text-align: left; white-space: nowrap; }
+  thead th {
+    font-family: 'Spline Sans Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--chalk-dim); font-weight: 500;
+    border-bottom: 1px solid var(--line);
+  }
+  tbody tr { border-bottom: 1px solid var(--line); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr.leader { background: rgba(233, 180, 76, 0.10); }
+  td.rank {
+    font-family: 'Spline Sans Mono', monospace; font-weight: 700;
+    width: 44px; color: var(--chalk-dim);
+  }
+  tr.leader td.rank { color: var(--gold); }
+  td.manager { font-weight: 600; }
+  td.manager .team { display: block; font-size: 12px; font-weight: 400; color: var(--chalk-dim); }
+  td.num { font-family: 'Spline Sans Mono', monospace; font-weight: 700; text-align: right; }
+  td.move { width: 40px; text-align: center; font-family: 'Spline Sans Mono', monospace; font-size: 13px; }
+  .move.up { color: var(--up); } .move.down { color: var(--down); } .move.same { color: var(--chalk-dim); }
+
+  /* Interval tabs */
+  .tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tabs button {
+    font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.06em;
+    background: none; color: var(--chalk-dim);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 14px; cursor: pointer;
+  }
+  .tabs button[aria-selected="true"] { background: var(--chalk); color: var(--pitch-deep); border-color: var(--chalk); }
+  .tabs button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* Gameweek grid */
+  .grid-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .grid-scroll table td, .grid-scroll table th { padding: 10px 10px; }
+  .grid-scroll th.sticky, .grid-scroll td.sticky {
+    position: sticky; left: 0; background: var(--pitch-panel); z-index: 1;
+    box-shadow: 4px 0 8px -4px rgba(0,0,0,0.45);
+  }
+  .grid-scroll td.gw { font-family: 'Spline Sans Mono', monospace; text-align: right; }
+  .grid-scroll td.gw.best { color: var(--gold); font-weight: 700; }
+  .grid-scroll td.total { font-family: 'Spline Sans Mono', monospace; font-weight: 700; text-align: right; border-left: 1px solid var(--line); }
+
+  footer {
+    text-align: center; margin-top: 20px;
+    font-family: 'Spline Sans Mono', monospace; font-size: 11.5px;
+    color: var(--chalk-dim); letter-spacing: 0.04em;
+  }
+  .error-box {
+    background: var(--pitch-panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 20px; text-align: center;
+    font-size: 14px; color: var(--chalk-dim);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Fantasy Premier League · <span id="season">2026/27</span></div>
+    <h1 id="league-name">With My Woes</h1>
+    <div class="updated" id="updated">Loading…</div>
+    <div class="sample-badge">Sample data — waiting for first real update</div>
+  </header>
+
+  <div class="season-strip" id="season-strip" aria-label="Season progress by prize interval"></div>
+
+  <div id="winner-banners"></div>
+
+  <section id="standings-section">
+    <h2 id="standings-title">Current standings</h2>
+    <div class="section-sub" id="standings-sub"></div>
+    <div class="panel">
+      <table aria-describedby="standings-title">
+        <thead>
+          <tr><th>#</th><th>Manager</th><th style="text-align:center">±</th><th style="text-align:right" id="lastgw-head">GW</th><th style="text-align:right">Interval</th></tr>
+        </thead>
+        <tbody id="standings-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Gameweek by gameweek</h2>
+    <div class="section-sub">Points per gameweek within each prize interval.</div>
+    <div class="tabs" role="tablist" id="interval-tabs"></div>
+    <div class="panel grid-scroll">
+      <table>
+        <thead id="grid-head"></thead>
+        <tbody id="grid-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>Scores from the official FPL API · view only · updates daily after each finished gameweek</footer>
+</div>
+
+<script>
+const INTERVALS = [
+  { n: 1, start: 1,  end: 10 },
+  { n: 2, start: 11, end: 19 },
+  { n: 3, start: 20, end: 29 },
+  { n: 4, start: 30, end: 38 }
+];
+const PRIZE = "£60";
+let D = null;
+
+init();
+
+async function init() {
+  try {
+    const res = await fetch('data.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    D = await res.json();
+  } catch (e) {
+    document.querySelector('.wrap').innerHTML =
+      '<div class="error-box">Couldn\'t load the latest scores. Check back shortly — the table updates after each finished gameweek.</div>';
+    return;
+  }
+  render();
+}
+
+function intervalPoints(entry, itv, uptoGw) {
+  const s = D.scores[String(entry)] || {};
+  let t = 0;
+  const end = Math.min(itv.end, uptoGw);
+  for (let g = itv.start; g <= end; g++) t += (s[String(g)] || 0);
+  return t;
+}
+
+function rankRows(rows) { // rows: [{entry, pts}] sorted desc → assign shared ranks
+  rows.sort((a, b) => b.pts - a.pts);
+  let rank = 0, prev = null;
+  rows.forEach((r, i) => {
+    if (r.pts !== prev) { rank = i + 1; prev = r.pts; }
+    r.rank = rank;
+  });
+  return rows;
+}
+
+function currentInterval() {
+  const gw = D.last_processed_gw;
+  return INTERVALS.find(i => gw <= i.end) || INTERVALS[3];
+}
+
+function render() {
+  const gw = D.last_processed_gw;
+  if (D.sample) document.body.classList.add('is-sample');
+  document.getElementById('league-name').textContent = D.league_name;
+  document.getElementById('season').textContent = D.season;
+  const upd = new Date(D.updated_at);
+  document.getElementById('updated').textContent =
+    'After Gameweek ' + gw + ' · updated ' +
+    upd.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+  renderStrip(gw);
+  renderWinners(gw);
+  const cur = currentInterval();
+  renderStandings(cur, gw);
+  renderTabs(cur);
+  renderGrid(cur, gw);
+}
+
+function renderStrip(gw) {
+  const host = document.getElementById('season-strip');
+  const track = document.createElement('div');
+  track.className = 'strip-track';
+  INTERVALS.forEach(itv => {
+    const block = document.createElement('div');
+    block.className = 'strip-block';
+    const cells = document.createElement('div');
+    cells.className = 'strip-cells';
+    for (let g = itv.start; g <= itv.end; g++) {
+      const c = document.createElement('span');
+      if (g <= gw) c.className = 'done';
+      else if (g === gw + 1) c.className = 'live';
+      cells.appendChild(c);
+    }
+    block.appendChild(cells);
+    const lab = document.createElement('div');
+    lab.className = 'strip-label';
+    lab.innerHTML = '<span>GW' + itv.start + '–' + itv.end + '</span><span class="prize">' + PRIZE + '</span>';
+    block.appendChild(lab);
+    if (gw >= itv.end) {
+      const winners = getWinners(itv);
+      const w = document.createElement('div');
+      w.className = 'strip-winner';
+      w.textContent = '🏆 ' + winners.map(x => x.name).join(' & ');
+      block.appendChild(w);
+    }
+    track.appendChild(block);
+  });
+  host.appendChild(track);
+}
+
+function getWinners(itv) {
+  const rows = rankRows(D.managers.map(m => ({ entry: m.entry, name: m.name, pts: intervalPoints(m.entry, itv, 38) })));
+  return rows.filter(r => r.rank === 1);
+}
+
+function renderWinners(gw) {
+  const host = document.getElementById('winner-banners');
+  const justFinished = INTERVALS.filter(i => i.end === gw); // banner for the interval that just closed
+  justFinished.forEach(itv => {
+    const winners = getWinners(itv);
+    const div = document.createElement('div');
+    div.className = 'winner-banner';
+    const names = winners.map(w => w.name).join(' & ');
+    const split = winners.length > 1 ? ' (' + PRIZE + ' split ' + winners.length + ' ways)' : '';
+    div.innerHTML =
+      '<div class="wb-eyebrow">Interval ' + itv.n + ' champion · GW' + itv.start + '–' + itv.end + '</div>' +
+      '<div class="wb-name">🏆 ' + esc(names) + '</div>' +
+      '<div class="wb-detail">' + winners[0].pts + ' points · wins ' + PRIZE + split + '</div>';
+    host.appendChild(div);
+  });
+}
+
+function renderStandings(itv, gw) {
+  document.getElementById('standings-title').textContent =
+    'Interval ' + itv.n + ' standings';
+  const left = Math.max(0, itv.end - gw);
+  document.getElementById('standings-sub').textContent =
+    'GW' + itv.start + '–' + itv.end + ' · playing for ' + PRIZE + ' · ' +
+    (left === 0 ? 'interval complete' : left + ' gameweek' + (left === 1 ? '' : 's') + ' remaining');
+  document.getElementById('lastgw-head').textContent = 'GW' + gw;
+
+  const now = rankRows(D.managers.map(m => ({ entry: m.entry, m, pts: intervalPoints(m.entry, itv, gw) })));
+  let prevRanks = {};
+  if (gw > itv.start) {
+    rankRows(D.managers.map(m => ({ entry: m.entry, pts: intervalPoints(m.entry, itv, gw - 1) })))
+      .forEach(r => prevRanks[r.entry] = r.rank);
+  }
+
+  const body = document.getElementById('standings-body');
+  body.innerHTML = '';
+  now.forEach(r => {
+    const tr = document.createElement('tr');
+    if (r.rank === 1) tr.className = 'leader';
+    const gwPts = (D.scores[String(r.entry)] || {})[String(gw)];
+    let move = '<span class="move same">–</span>';
+    if (prevRanks[r.entry]) {
+      const d = prevRanks[r.entry] - r.rank;
+      if (d > 0) move = '<span class="move up">▲' + d + '</span>';
+      else if (d < 0) move = '<span class="move down">▼' + (-d) + '</span>';
+    }
+    tr.innerHTML =
+      '<td class="rank">' + r.rank + '</td>' +
+      '<td class="manager">' + esc(r.m.name) + '<span class="team">' + esc(r.m.team) + '</span></td>' +
+      '<td class="move-cell" style="text-align:center">' + move + '</td>' +
+      '<td class="num">' + (gwPts == null ? '–' : gwPts) + '</td>' +
+      '<td class="num">' + r.pts + '</td>';
+    body.appendChild(tr);
+  });
+}
+
+function renderTabs(active) {
+  const host = document.getElementById('interval-tabs');
+  host.innerHTML = '';
+  INTERVALS.forEach(itv => {
+    const b = document.createElement('button');
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', itv.n === active.n ? 'true' : 'false');
+    b.textContent = 'GW' + itv.start + '–' + itv.end;
+    b.addEventListener('click', () => {
+      renderTabs(itv);
+      renderGrid(itv, D.last_processed_gw);
+    });
+    host.appendChild(b);
+  });
+}
+
+function renderGrid(itv, gw) {
+  const head = document.getElementById('grid-head');
+  const body = document.getElementById('grid-body');
+  const shownEnd = Math.min(itv.end, Math.max(gw, itv.start - 1));
+  let h = '<tr><th class="sticky">Manager</th>';
+  for (let g = itv.start; g <= shownEnd; g++) h += '<th style="text-align:right">GW' + g + '</th>';
+  h += '<th style="text-align:right">Total</th></tr>';
+  head.innerHTML = h;
+
+  const rows = rankRows(D.managers.map(m => ({ entry: m.entry, m, pts: intervalPoints(m.entry, itv, gw) })));
+  // best score per GW for highlighting
+  const best = {};
+  for (let g = itv.start; g <= shownEnd; g++) {
+    best[g] = Math.max(...D.managers.map(m => (D.scores[String(m.entry)] || {})[String(g)] ?? -1));
+  }
+  body.innerHTML = '';
+  rows.forEach(r => {
+    const s = D.scores[String(r.entry)] || {};
+    let cells = '<td class="sticky manager">' + esc(r.m.name) + '</td>';
+    for (let g = itv.start; g <= shownEnd; g++) {
+      const v = s[String(g)];
+      const isBest = v != null && v === best[g] && v >= 0;
+      cells += '<td class="gw' + (isBest ? ' best' : '') + '">' + (v == null ? '–' : v) + '</td>';
+    }
+    cells += '<td class="total">' + r.pts + '</td>';
+    const tr = document.createElement('tr');
+    tr.innerHTML = cells;
+    body.appendChild(tr);
+  });
+  if (shownEnd < itv.start) {
+    body.innerHTML = '<tr><td class="sticky manager" colspan="2" style="color:var(--chalk-dim)">This interval hasn\'t started yet.</td></tr>';
+  }
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+</body>
+</html>
