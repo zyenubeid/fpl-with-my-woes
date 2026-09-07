@@ -3,18 +3,23 @@
   "league_id": 1741238,
   "league_name": "With my woes",
   "season": "2026/27",
-  "updated_at": "2026-09-01T13:12:15Z",
-  "last_processed_gw": 2,
+  "updated_at": "2026-09-07T14:03:04Z",
+  "last_processed_gw": 3,
   "managers": [
+    {
+      "entry": 7304836,
+      "name": "Daisie Patefield",
+      "team": "DPFC"
+    },
     {
       "entry": 5713660,
       "name": "Dee Oloko",
       "team": "Penders Moderation"
     },
     {
-      "entry": 6216715,
-      "name": "Andrew Chudnovsky",
-      "team": "Andrew's Team"
+      "entry": 6599839,
+      "name": "Matthew Carmichael",
+      "team": "Rubber Digne Rapids"
     },
     {
       "entry": 6579239,
@@ -22,14 +27,9 @@
       "team": "Akelee Athletic"
     },
     {
-      "entry": 7304836,
-      "name": "Daisie Patefield",
-      "team": "DPFC"
-    },
-    {
-      "entry": 6599839,
-      "name": "Matthew Carmichael",
-      "team": "Rubber Digne Rapids"
+      "entry": 6216715,
+      "name": "Andrew Chudnovsky",
+      "team": "Andrew's Team"
     },
     {
       "entry": 7096876,
@@ -38,29 +38,35 @@
     }
   ],
   "scores": {
-    "5713660": {
-      "1": 69,
-      "2": 88
-    },
-    "6216715": {
-      "1": 49,
-      "2": 104
-    },
-    "6579239": {
-      "1": 52,
-      "2": 98
-    },
     "7304836": {
       "1": 71,
-      "2": 72
+      "2": 72,
+      "3": 69
+    },
+    "5713660": {
+      "1": 69,
+      "2": 88,
+      "3": 49
     },
     "6599839": {
       "1": 52,
-      "2": 79
+      "2": 79,
+      "3": 74
+    },
+    "6579239": {
+      "1": 52,
+      "2": 98,
+      "3": 50
+    },
+    "6216715": {
+      "1": 49,
+      "2": 104,
+      "3": 44
     },
     "7096876": {
       "1": 54,
-      "2": 57
+      "2": 57,
+      "3": 69
     }
   }
 }
