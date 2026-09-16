@@ -3,24 +3,9 @@
   "league_id": 1741238,
   "league_name": "With my woes",
   "season": "2026/27",
-  "updated_at": "2026-09-07T14:03:04Z",
-  "last_processed_gw": 3,
+  "updated_at": "2026-09-16T12:24:55Z",
+  "last_processed_gw": 4,
   "managers": [
-    {
-      "entry": 7304836,
-      "name": "Daisie Patefield",
-      "team": "DPFC"
-    },
-    {
-      "entry": 5713660,
-      "name": "Dee Oloko",
-      "team": "Penders Moderation"
-    },
-    {
-      "entry": 6599839,
-      "name": "Matthew Carmichael",
-      "team": "Rubber Digne Rapids"
-    },
     {
       "entry": 6579239,
       "name": "Robert Crawford",
@@ -35,38 +20,59 @@
       "entry": 7096876,
       "name": "Zyen Ubeid",
       "team": "Pending Moderation"
+    },
+    {
+      "entry": 5713660,
+      "name": "Dee Oloko",
+      "team": "Penders Moderation"
+    },
+    {
+      "entry": 7304836,
+      "name": "Daisie Patefield",
+      "team": "DPFC"
+    },
+    {
+      "entry": 6599839,
+      "name": "Matthew Carmichael",
+      "team": "Rubber Digne Rapids"
     }
   ],
   "scores": {
-    "7304836": {
-      "1": 71,
-      "2": 72,
-      "3": 69
-    },
-    "5713660": {
-      "1": 69,
-      "2": 88,
-      "3": 49
-    },
-    "6599839": {
-      "1": 52,
-      "2": 79,
-      "3": 74
-    },
     "6579239": {
       "1": 52,
       "2": 98,
-      "3": 50
+      "3": 50,
+      "4": 97
     },
     "6216715": {
       "1": 49,
       "2": 104,
-      "3": 44
+      "3": 44,
+      "4": 84
     },
     "7096876": {
       "1": 54,
       "2": 57,
-      "3": 69
+      "3": 69,
+      "4": 88
+    },
+    "5713660": {
+      "1": 69,
+      "2": 88,
+      "3": 49,
+      "4": 60
+    },
+    "7304836": {
+      "1": 71,
+      "2": 72,
+      "3": 69,
+      "4": 53
+    },
+    "6599839": {
+      "1": 52,
+      "2": 79,
+      "3": 74,
+      "4": 60
     }
   }
 }
