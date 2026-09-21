@@ -3,8 +3,8 @@
   "league_id": 1741238,
   "league_name": "With my woes",
   "season": "2026/27",
-  "updated_at": "2026-09-16T12:24:55Z",
-  "last_processed_gw": 4,
+  "updated_at": "2026-09-21T14:54:53Z",
+  "last_processed_gw": 5,
   "managers": [
     {
       "entry": 6579239,
@@ -12,9 +12,9 @@
       "team": "Akelee Athletic"
     },
     {
-      "entry": 6216715,
-      "name": "Andrew Chudnovsky",
-      "team": "Andrew's Team"
+      "entry": 7304836,
+      "name": "Daisie Patefield",
+      "team": "DPFC"
     },
     {
       "entry": 7096876,
@@ -22,19 +22,19 @@
       "team": "Pending Moderation"
     },
     {
-      "entry": 5713660,
-      "name": "Dee Oloko",
-      "team": "Penders Moderation"
-    },
-    {
-      "entry": 7304836,
-      "name": "Daisie Patefield",
-      "team": "DPFC"
+      "entry": 6216715,
+      "name": "Andrew Chudnovsky",
+      "team": "Andrew's Team"
     },
     {
       "entry": 6599839,
       "name": "Matthew Carmichael",
       "team": "Rubber Digne Rapids"
+    },
+    {
+      "entry": 5713660,
+      "name": "Dee Oloko",
+      "team": "Penders Moderation"
     }
   ],
   "scores": {
@@ -42,37 +42,43 @@
       "1": 52,
       "2": 98,
       "3": 50,
-      "4": 97
-    },
-    "6216715": {
-      "1": 49,
-      "2": 104,
-      "3": 44,
-      "4": 84
-    },
-    "7096876": {
-      "1": 54,
-      "2": 57,
-      "3": 69,
-      "4": 88
-    },
-    "5713660": {
-      "1": 69,
-      "2": 88,
-      "3": 49,
-      "4": 60
+      "4": 97,
+      "5": 66
     },
     "7304836": {
       "1": 71,
       "2": 72,
       "3": 69,
-      "4": 53
+      "4": 53,
+      "5": 71
+    },
+    "7096876": {
+      "1": 54,
+      "2": 57,
+      "3": 69,
+      "4": 88,
+      "5": 62
+    },
+    "6216715": {
+      "1": 49,
+      "2": 104,
+      "3": 44,
+      "4": 84,
+      "5": 42
     },
     "6599839": {
       "1": 52,
       "2": 79,
       "3": 74,
-      "4": 60
+      "4": 60,
+      "5": 56
+    },
+    "5713660": {
+      "1": 69,
+      "2": 88,
+      "3": 49,
+      "4": 60,
+      "5": 45
     }
   }
 }
